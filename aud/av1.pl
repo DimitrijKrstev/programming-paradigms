@@ -6,24 +6,24 @@ kola(zapad,sever).
 kola(istok,sever).
 kola(sever,zapad).
 
-% X, Y; as for car X has car Y on its right
+% X, Y; as for car X is on the right of car Y
 na_desno(zapad,jug).
 na_desno(jug,istok).
 na_desno(istok,sever).
 na_desno(sever,zapad).
 
-% the current car has a car left to it if it itself is on the right of that car
+% the current car X has a car Y left to it if it itself is on the right of that car
 na_levo(X,Y):-na_desno(Y,X).
 
-% current car is going straight if its direction is the car on the right of the car
-% on its right such that Y=Y (assuming intersection always has 4 cars on each side)
+% current car is going straight if its direction is the car on the left of the car
+% on its left such that Y=Y (assuming intersection always has 4 cars on each side)
 going_straight(X,Y):-na_desno(X,Z), na_desno(Z,Y).
 
 % current car is going left if the car on the left of us has our direction
-going_left(X):-kola(X,Y), na_levo(X,Y).
+going_left(X):-kola(X,Y), na_desno(X,Y).
 
 % stop going straight only if the car on the right is not going left
-stop_straight(X):-na_desno(X,Y), not(going_left(Y)).
+stop_straight(X):-na_desno(Y,X), not(going_left(Y)).
 
 
 % the car on the right has priority over us if its on our right and it is 
