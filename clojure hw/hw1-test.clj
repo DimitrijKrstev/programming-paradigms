@@ -150,10 +150,10 @@
   (is (= (my-reduce + nil '()) nil)))       ; Reduce on an empty list
 
 (deftest my-flat-map-test
-  (is (= (my-flat-map #(list % %) '(1 2 3)) '(1 1 2 2 3 3))) ; Flat map duplicating elements
-  (is (= (my-flat-map #(list (* % 2)) '(1 2 3)) '(2 4 6))) ; Flat map with multiplication
-  (is (= (my-flat-map #(list) '()) nil))
-  (is (= (my-flat-map #(list % (* % %)) '(1 2 3)) '(1 1 2 4 3 9)))
-  (is (= (my-flat-map #(repeat % %) '(1 2 3)) '(1 2 2 3 3 3))))
+  (is (= (my-flat-map #(list % %) '(1 2 3)) '(1 1 2 2 3 3)))        ; Flat map duplicating elements
+  (is (= (my-flat-map #(list (* % 2)) '(1 2 3)) '(2 4 6)))          ; Flat map multiplication
+  (is (= (my-flat-map #(list) '()) nil))                            ; Flat map emptu list
+  (is (= (my-flat-map #(list % (* % %)) '(1 2 3)) '(1 1 2 4 3 9)))  ; Flat map elemnt, square pairs
+  (is (= (my-flat-map #(repeat % %) '(1 2 3)) '(1 2 2 3 3 3))))     ; Flat map repeat
 
 (run-tests)
