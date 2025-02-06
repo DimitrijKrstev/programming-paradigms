@@ -82,7 +82,9 @@
 (defn transform [S]
   (map #(replace-row %) S))
 
-;;;; Visualize 
+;;;; BONUS Visualize
+
+;;; Println visualization
 
 (def sudoku [[5 3 0 0 7 0 0 0 0]
              [6 0 0 1 9 5 0 0 0]
@@ -97,8 +99,9 @@
 (defn print-sudoku [S]
   (doseq [Row S] (println Row)))
 
-(println "Unsolved:")
-(print-sudoku sudoku)
+;;; Seesaw visualization
 
-(println "Solved:")
-(print-sudoku (solve sudoku))
+(require '[hw2-sudoku-visual :refer [show-sudoku]])
+
+(show-sudoku "Unsolved sudoku" sudoku)
+(show-sudoku "Solved sudoku" (solve sudoku))
