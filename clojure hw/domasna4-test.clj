@@ -1,7 +1,7 @@
-(ns hw1-test
+(ns domasna4-test
   (:require
    [clojure.test :refer [deftest is run-tests]]
-   [hw1 :refer :all]))
+   [domasna4 :refer :all]))
 
 ;;;; Group 1 Tests
 
